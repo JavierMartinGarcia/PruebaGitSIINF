@@ -16,17 +16,27 @@ for ((i=0 ;i < ${#dam1[@]}; i++)); do
     done
     notas[i]=$((introduce/9))
 done
-echo "${notas[@]}"
-
 media=0
+
 for ((i=0 ; i < ${#dam1[@]} ; i++));do
     ((media+=notas[i]))
 done
+
 ((media=$media/${#notas[@]}))
 result=""
-if (())
-case $media in
-    0)
+if [[ $media -le 3 ]];then
     result+="Muy Deficiente"
-
-esac
+elif [[ $media -gt 3 && $media -lt 5 ]];then
+    result+="Insuficiente"
+elif [[ $media -eq 5 ]];then
+    result+="Suficiente"
+elif [[ $media -eq 6 ]];then
+    result+="Bien"
+elif [[ $media -ge 7 && $media -le 8 ]];then
+    result+="Notable"
+elif [[ $media -eq 9 ]];then
+    result+="Sobresaliente"
+else
+    result+="Matrícula de Honor"
+fi
+echo "$alumn, usted tiene una nota $result"
