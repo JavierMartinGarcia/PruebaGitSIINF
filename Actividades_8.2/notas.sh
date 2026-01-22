@@ -19,7 +19,14 @@ done
 echo "${notas[@]}"
 
 media=0
-for((i=0;i < ${#dam1[@];i++}));do
+for ((i=0 ; i < ${#dam1[@]} ; i++));do
     ((media+=notas[i]))
 done
-media=$media/${#notas[@]}
+((media=$media/${#notas[@]}))
+result=""
+if (())
+case $media in
+    0)
+    result+="Muy Deficiente"
+
+esac
